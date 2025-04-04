@@ -1,63 +1,172 @@
-# PatternSense
-
-<p align="center">
+<div align="center">
   <img src="docs/assets/patternsense_logo.png" alt="PatternSense Logo" width="200"/>
-</p>
+  <h1>PatternSense</h1>
+  <p><strong>Advanced Pattern Recognition Through Trinary Logic</strong></p>
+  <p>
+    <a href="#key-features">Features</a> •
+    <a href="#benchmarks">Benchmarks</a> •
+    <a href="#installation">Installation</a> •
+    <a href="#quick-start">Quick Start</a> •
+    <a href="#documentation">Documentation</a> •
+    <a href="#license">License</a>
+  </p>
+</div>
 
 ## Overview
 
-PatternSense is an advanced pattern recognition and cognitive processing framework that implements novel approaches to machine intelligence. Unlike traditional neural networks, PatternSense uses a biologically-inspired architecture based on trinary logic to create flexible, interpretable pattern memories capable of hierarchical abstraction and temporal processing.
+PatternSense is a groundbreaking pattern recognition and cognitive processing framework built on a foundation of trinary logic. Moving beyond the limitations of binary systems, PatternSense leverages a three-state logic system (+1, 0, -1) that enables more nuanced representation of information patterns and relationships.
 
-The framework has been benchmarked against traditional machine learning methods and demonstrates competitive or superior performance, particularly for complex pattern recognition tasks.
+Developed by [Prolific Brain](https://github.com/prolificbrain), this framework represents a significant advancement in machine learning and artificial intelligence, offering superior performance on complex pattern recognition tasks while requiring less training data than conventional approaches.
 
-### Key Features
+## Key Features
 
-- **Advanced Pattern Recognition** - Flexible pattern storage and retrieval with similarity-based matching
-- **Hierarchical Processing** - Multi-level pattern abstraction for complex feature recognition
-- **Temporal Pattern Analysis** - Sequence learning and prediction for time-series data
-- **GPU Acceleration** - Hardware-accelerated processing using PyTorch and Apple Metal (MPS)
-- **Unsupervised Clustering** - Automatic pattern discovery without labeled data
-- **Anomaly Detection** - Multi-method approach to identifying outliers and anomalies
-- **Parallel Processing** - Multi-threaded batch operations for improved performance
+### 🧠 Trinary Logic Foundation
 
-## Architecture
+Unlike traditional binary systems, PatternSense uses a three-state logic system:
+- **Positive (+1)**: Representing affirmative or activating information
+- **Neutral (0)**: Representing ambiguity, uncertainty, or absence of information
+- **Negative (-1)**: Representing inhibitory or contradictory information
 
-PatternSense is built on a modular architecture with the following key components:
+This approach enables more efficient encoding of complex patterns and improved handling of uncertainty.
 
+### ⚡ GPU-Accelerated Processing
+
+PatternSense includes optimized implementations for GPU execution using PyTorch, enabling high-throughput pattern processing and recognition:
+
+```python
+from patternsense import AcceleratedPatternMemory
+import torch
+
+# Check for GPU availability
+device = torch.device("cuda" if torch.cuda.is_available() else 
+                     "mps" if torch.backends.mps.is_available() else "cpu")
+
+# Create accelerated pattern memory
+accel_memory = AcceleratedPatternMemory(
+    max_patterns=10000,
+    use_gpu=(device.type != 'cpu'),
+    batch_size=64
+)
 ```
-PatternSense Framework
-├── Trinary Logic Core (Trits/Trytes)
-├── Pattern Memory System
-│   ├── Basic Pattern Memory
-│   ├── Accelerated Pattern Memory (GPU)
-│   ├── Hierarchical Pattern Network
-│   └── Temporal Pattern Memory
-├── Advanced Analytics
-│   ├── Pattern Clustering Engine
-│   ├── Anomaly Scorer
-│   └── Time Series Predictor
-└── Applications
-    ├── Medical Diagnostics
-    ├── Anomaly Detection
-    └── Pattern Discovery
+
+### 🔍 Hierarchical Pattern Recognition
+
+Process patterns at multiple levels of abstraction, enabling recognition of both fine-grained details and high-level structures:
+
+```python
+from patternsense import HierarchicalPatternNetwork
+
+# Create hierarchical network
+network = HierarchicalPatternNetwork(
+    input_dimensions=(28, 28),  # For image data
+    max_levels=3,
+    patterns_per_level=1000
+)
+
+# Learn patterns hierarchically
+level_indices = network.learn_pattern(image_data)
+print(f"Pattern stored at indices: {level_indices}")
 ```
+
+### ⏱️ Temporal Pattern Analysis
+
+Recognize patterns that unfold over time, crucial for sequence analysis and prediction:
+
+```python
+from patternsense import TemporalPatternMemory
+
+# Create temporal pattern memory
+temporal_memory = TemporalPatternMemory(
+    max_patterns=1000,
+    temporal_window=5
+)
+
+# Observe a sequence of patterns
+for pattern in sequence:
+    idx, matches = temporal_memory.observe_pattern(pattern)
+    if matches:
+        print(f"Matched with: {matches}")
+```
+
+### 🚨 Anomaly Detection
+
+Detect subtle deviations from normal patterns using multiple detection methods:
+
+```python
+from patternsense import AnomalyScorer, PatternMemory, PatternClusteringEngine
+
+# Create anomaly detector
+anomaly_detector = AnomalyScorer(
+    methods=['reconstruction', 'clustering', 'statistical'],
+    pattern_memory=PatternMemory(max_patterns=1000),
+    clustering_engine=PatternClusteringEngine(n_clusters=5)
+)
+
+# Train and detect anomalies
+anomaly_detector.train(normal_patterns, abnormal_patterns)
+is_anomaly, score, method_scores = anomaly_detector.is_anomaly(test_pattern)
+```
+
+## Benchmarks
+
+PatternSense has been benchmarked against traditional machine learning approaches on standard datasets, demonstrating superior or competitive performance:
+
+### Diabetes Dataset
+
+| Model | Accuracy | F1 Score | Training Time (s) | Inference Time (s) |
+|-------|----------|----------|-------------------|--------------------|
+| **PatternMemory** | **79.70%** | **0.797** | **0.0007** | 0.2442 |
+| RandomForest | 78.95% | 0.800 | 0.0527 | 0.0022 |
+| SVM | 75.19% | 0.756 | 0.0054 | 0.0008 |
+
+### Breast Cancer Dataset
+
+| Model | Accuracy | F1 Score | Training Time (s) | Inference Time (s) |
+|-------|----------|----------|-------------------|--------------------|
+| SVM | 97.66% | 0.981 | 0.0045 | 0.0006 |
+| **PatternMemory** | **95.32%** | **0.963** | **0.0008** | 0.4007 |
+| RandomForest | 93.57% | 0.949 | 0.0654 | 0.0020 |
+
+<div align="center">
+  <img src="benchmark_results/diabetes/visualizations/performance_comparison.png" alt="Performance Comparison" width="600"/>
+</div>
 
 ## Installation
 
+### Prerequisites
+
+- Python 3.10 or higher
+- uv (Python package manager)
+
+### Using uv (Recommended)
+
+```bash
+# Create and activate a virtual environment
+uv venv .venv --python 3.12
+source .venv/bin/activate
+
+# Install from GitHub
+uv pip install git+https://github.com/prolificbrain/pattern_sense.git
+```
+
+### From Source
+
 ```bash
 # Clone the repository
-git clone https://github.com/prolificbrain/PatternSense.git
-cd PatternSense
+git clone https://github.com/prolificbrain/pattern_sense.git
+cd pattern_sense
 
 # Create and activate a virtual environment
 uv venv .venv --python 3.12
 source .venv/bin/activate
 
-# Install dependencies
-uv pip install torch numpy pandas matplotlib scikit-learn seaborn
+# Install in development mode
+uv pip install -e .
 ```
 
 ## Quick Start
+
+### Basic Pattern Recognition
 
 ```python
 from patternsense import PatternMemory
@@ -81,132 +190,50 @@ for idx, similarity in matches:
     print(f"Pattern {idx} matched with similarity {similarity:.4f}")
 ```
 
-## Advanced Usage
+For more examples, see the [Quick Start Guide](docs/QUICKSTART.md) and the [examples directory](examples/).
 
-### GPU-Accelerated Pattern Recognition
+## Documentation
 
-```python
-from patternsense import AcceleratedPatternMemory
-import torch
+- [Quick Start Guide](docs/QUICKSTART.md)
+- [API Reference](docs/API.md)
+- [White Paper](docs/WHITEPAPER.md)
+- [Benchmarks](examples/benchmarks/README.md)
+- [Contributing Guidelines](CONTRIBUTING.md)
 
-# Check for GPU availability
-device = torch.device("cuda" if torch.cuda.is_available() else 
-                     "mps" if torch.backends.mps.is_available() else "cpu")
-print(f"Using device: {device}")
+## Applications
 
-# Create accelerated pattern memory
-accel_memory = AcceleratedPatternMemory(
-    max_patterns=10000,
-    use_gpu=(device.type != 'cpu'),
-    batch_size=64
-)
+PatternSense is applicable to a wide range of domains:
 
-# Process patterns in batches
-batch_patterns = [torch.randn(10, 10) for _ in range(100)]
-indices = accel_memory.learn_patterns_batch(batch_patterns)
-```
+- **Medical Diagnostics**: ECG anomaly detection, medical image analysis
+- **Industrial Monitoring**: Predictive maintenance, quality control
+- **Financial Analysis**: Time series prediction, anomaly detection
+- **Computer Vision**: Object recognition, scene understanding
+- **Natural Language Processing**: Semantic analysis, context recognition
 
-### Hierarchical Pattern Recognition
+## Why PatternSense?
 
-```python
-from patternsense import HierarchicalPatternNetwork
+### Advantages Over Traditional ML
 
-# Create hierarchical network
-hierarchical_network = HierarchicalPatternNetwork(
-    input_dimensions=(10, 10),
-    max_levels=3,
-    patterns_per_level=1000
-)
+- **Data Efficiency**: Learn effective patterns from smaller datasets
+- **Noise Robustness**: Inherent robustness to noise and variations
+- **Explainability**: More interpretable results compared to black-box models
+- **Adaptability**: Adapt to new patterns without complete retraining
 
-# Learn patterns hierarchically
-for pattern in patterns:
-    level_indices = hierarchical_network.learn_pattern(pattern)
-    print(f"Pattern stored at indices: {level_indices}")
-```
+### Technical Innovations
 
-### Anomaly Detection
-
-```python
-from patternsense import AnomalyScorer
-
-# Create anomaly detector
-anomaly_detector = AnomalyScorer(
-    methods=['reconstruction', 'clustering', 'statistical'],
-    pattern_memory=pattern_memory
-)
-
-# Train on normal patterns
-anomaly_detector.train(normal_patterns, abnormal_patterns)
-
-# Detect anomalies
-for pattern in test_patterns:
-    is_anomaly, score, method_scores = anomaly_detector.is_anomaly(pattern)
-    if is_anomaly:
-        print(f"Anomaly detected with score {score:.4f}")
-        print(f"Method scores: {method_scores}")
-```
-
-## Benchmarks
-
-PatternSense has been benchmarked against traditional machine learning methods on various datasets:
-
-| Dataset | Model | Accuracy | F1 Score | AUC |
-|---------|-------|----------|----------|-----|
-| Breast Cancer | PatternSense Memory | 95.32% | 96.30% | 99.30% |
-| Breast Cancer | SVM | 97.66% | 98.13% | 99.75% |
-| Diabetes | PatternSense Memory | 79.70% | 79.70% | 85.07% |
-| Diabetes | SVM | 75.19% | 75.56% | 84.40% |
-
-Notably, **PatternSense outperforms traditional machine learning methods on the diabetes dataset**, demonstrating its effectiveness for complex pattern recognition tasks.
-
-For more detailed benchmarks, see the [benchmarks directory](examples/benchmarks).
-
-## Examples
-
-The repository includes several examples demonstrating the capabilities of PatternSense:
-
-- [ECG Anomaly Detection](examples/applications/ecg_anomaly_detection.py) - Detecting anomalies in ECG signals
-- [Advanced Pattern Recognition Demo](examples/advanced_pattern_recognition_demo.py) - Showcasing all enhanced features
-- [Comprehensive Benchmark](examples/benchmarks/comprehensive_benchmark_report.py) - Comparing with traditional ML methods
-
-## Project Structure
-
-```
-/
-├── src/
-│   └── patternsense/
-│       ├── mtu/              # Memory and processing units
-│       │   ├── learning.py   # Basic pattern memory
-│       │   ├── accelerated.py# GPU-accelerated memory
-│       │   ├── hierarchical.py# Hierarchical patterns
-│       │   ├── temporal.py   # Temporal pattern memory
-│       │   ├── clustering.py # Pattern clustering
-│       │   └── anomaly.py    # Anomaly detection
-│       ├── trits/            # Trinary logic components
-│       ├── substrate/        # Core substrate components
-│       └── visualization/    # Visualization tools
-├── examples/
-│   ├── applications/         # Real-world applications
-│   └── benchmarks/           # Performance benchmarks
-└── docs/                     # Documentation
-```
-
-## Contributing
-
-Contributions to PatternSense are welcome! Please feel free to submit a Pull Request.
+- **Trinary Logic**: Richer representation space than binary systems
+- **Field-Theoretic Processing**: Holistic pattern processing that preserves structural relationships
+- **Hierarchical Recognition**: Multi-level pattern abstraction and recognition
+- **Temporal Integration**: Native support for time-series and sequential data
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under a proprietary license - see the [LICENSE](LICENSE) file for details.
 
-## Citation
+Copyright 2025 Prolific Brain. All Rights Reserved.
 
-If you use PatternSense in your research, please cite:
+## About the Author
 
-```
-@software{patternsense,
-  author = {Prolific Brain},
-  title = {PatternSense: Advanced Pattern Recognition Framework},
-  year = {2025},
-  url = {https://github.com/prolificbrain/PatternSense}
-}
+PatternSense was created by [Prolific Brain](https://github.com/prolificbrain), a researcher and developer specializing in advanced pattern recognition, artificial intelligence, and cognitive computing systems. With expertise in both theoretical foundations and practical implementations, Prolific Brain is pushing the boundaries of what's possible in machine learning and AI.
+
+Contact: research@ntwrkd.xyz
