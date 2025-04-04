@@ -16,6 +16,11 @@
 
 PatternSense is a groundbreaking pattern recognition and cognitive processing framework built on a foundation of trinary logic. Moving beyond the limitations of binary systems, PatternSense leverages a three-state logic system (+1, 0, -1) that enables more nuanced representation of information patterns and relationships.
 
+<div align="center">
+  <img src="docs/assets/diagrams/system_architecture.svg" alt="PatternSense System Architecture" width="700"/>
+  <p><em>Figure 1: PatternSense System Architecture</em></p>
+</div>
+
 Developed by [Prolific Brain](https://github.com/prolificbrain), this framework represents a significant advancement in machine learning and artificial intelligence, offering superior performance on complex pattern recognition tasks while requiring less training data than conventional approaches.
 
 ## Key Features
@@ -26,6 +31,11 @@ Unlike traditional binary systems, PatternSense uses a three-state logic system:
 - **Positive (+1)**: Representing affirmative or activating information
 - **Neutral (0)**: Representing ambiguity, uncertainty, or absence of information
 - **Negative (-1)**: Representing inhibitory or contradictory information
+
+<div align="center">
+  <img src="docs/assets/diagrams/trinary_logic.svg" alt="Trinary Logic System" width="600"/>
+  <p><em>Figure 2: Trinary Logic System</em></p>
+</div>
 
 This approach enables more efficient encoding of complex patterns and improved handling of uncertainty.
 
@@ -52,6 +62,11 @@ accel_memory = AcceleratedPatternMemory(
 ### 🔍 Hierarchical Pattern Recognition
 
 Process patterns at multiple levels of abstraction, enabling recognition of both fine-grained details and high-level structures:
+
+<div align="center">
+  <img src="docs/assets/diagrams/hierarchical_recognition.svg" alt="Hierarchical Pattern Recognition" width="650"/>
+  <p><em>Figure 3: Hierarchical Pattern Recognition Process</em></p>
+</div>
 
 ```python
 from patternsense import HierarchicalPatternNetwork
@@ -229,6 +244,11 @@ PatternSense is applicable to a wide range of domains:
 ## Future Directions
 
 PatternSense is at the forefront of a new paradigm in pattern recognition and cognitive computing. The following research directions represent our vision for the future of this technology:
+
+<div align="center">
+  <img src="docs/assets/diagrams/future_directions.svg" alt="Future Research Directions" width="700"/>
+  <p><em>Figure 4: Future Research Directions</em></p>
+</div>
 
 ### Integration with Advanced Neural Architectures
 
